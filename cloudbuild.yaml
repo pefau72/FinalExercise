@@ -1,0 +1,22 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'Build container image'
+  args: [
+    'build',
+    '.',
+    '-t',
+    'europe-west4-docker.pkg.dev/$PROJECT_ID/my-container-registry-pefa/pytorch-2-7-cu128-ubuntu-2204-nvidia-570-v20260108',
+    '-f',
+    'Dockerfile'
+  ]
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'Push container image'
+  args: [
+    'push',
+    'europe-west4-docker.pkg.dev/$PROJECT_ID/my-container-registry-pefa'
+  ]
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+  
+  
